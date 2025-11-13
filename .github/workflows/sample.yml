@@ -20,7 +20,7 @@ jobs:
           key: ${{ runner.os }}-ollama
 
       - name: Setup Ollama
-        uses: ai-actions/setup-ollama@v1
+        uses: ai-action/setup-ollama@v1
 
       - name: Verify installation
         run: ollama -v
