@@ -1,0 +1,28 @@
+name: Ollama (sample)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup-ollama:
+    runs-on: ${{ matrix.os }}
+    strategy:
+
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - uses: actions/cache@v4
+        with:
+          path: ~/.ollama
+          key: ${{ runner.os }}-ollama
+
+      - name: Setup Ollama
+        uses: ai-actions/setup-ollama@v1
+
+      - name: Verify installation
+        run: ollama -v
+
+      - run: ollama run phi:3-mini 'What is the capital of France?'
