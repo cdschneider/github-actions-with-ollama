@@ -25,4 +25,5 @@ jobs:
       - name: Verify installation
         run: ollama -v
 
-      - run: ollama run phi:3-mini 'What is the capital of France?'
+      - run: |
+          ollama run phi3:mini "What is the capital of France?"
